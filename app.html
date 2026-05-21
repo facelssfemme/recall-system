@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Recall System — Follow-Up Builder</title>
+  <link rel="stylesheet" href="css/recall.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+  o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+  o.onload=function(){window.trackingFunctions.onLoad({appId:"69ba0bde38507c001943f4fc"})},
+  document.head.appendChild(o)}initApollo();</script>
+</head>
+<body>
+  <div id="access-gate" class="access-gate">
+    <div class="access-gate__card">
+      <p class="eyebrow">Ease &amp; Empire</p>
+      <h1 class="access-gate__title">The Recall System</h1>
+      <p class="access-gate__helper">Enter your access password to open the builder.</p>
+      <form id="access-form" novalidate>
+        <div class="field">
+          <label for="access-password">Password</label>
+          <input
+            type="password"
+            id="access-password"
+            name="access-password"
+            required
+            autocomplete="current-password"
+          >
+          <span class="field-error" id="access-error" role="alert"></span>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="app-content" class="hidden">
+    <header class="site-header app-header-bar">
+      <div class="site-header__inner" style="justify-content: center;">
+        <a href="index.html" class="site-brand">
+          <span class="site-brand__parent">Ease &amp; Empire</span>
+          <span class="site-brand__product">The Recall System</span>
+        </a>
+        <button type="button" class="access-logout hidden" id="logout-btn" style="position: absolute; right: 1.25rem;">Log out</button>
+      </div>
+    </header>
+
+    <main class="app-page">
+      <header class="app-hero">
+        <p class="eyebrow">Follow-up builder</p>
+        <h1>Recover missed appointments with the exact follow-up to send</h1>
+        <p class="app-hero__sub">
+          Get ready-to-send SMS and email copy, send timing, and a front-desk call script — without guessing what to say.
+        </p>
+      </header>
+
+      <section class="form-section" aria-labelledby="form-heading">
+        <h2 id="form-heading" class="visually-hidden">Generate follow-up messages</h2>
+        <form id="generator-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="scenario">Scenario</label>
+              <select id="scenario" name="scenario" required>
+                <option value="">Select scenario</option>
+                <option value="no-show">No-show</option>
+                <option value="same-day-cancellation">Same-day cancellation</option>
+                <option value="overdue-rebooking">Overdue rebooking</option>
+                <option value="post-treatment">Post-treatment follow-up</option>
+              </select>
+              <span class="field-error" id="error-scenario" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="treatmentType">Treatment type</label>
+              <input
+                type="text"
+                id="treatmentType"
+                name="treatmentType"
+                required
+                placeholder="Botox, filler, facial, laser, consultation, membership appointment"
+                autocomplete="off"
+              >
+              <span class="field-error" id="error-treatmentType" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="timeSinceEvent">Time since event</label>
+              <select id="timeSinceEvent" name="timeSinceEvent" required>
+                <option value="">Select timing</option>
+                <option value="2 hours">2 hours</option>
+                <option value="1 day">1 day</option>
+                <option value="3 days">3 days</option>
+                <option value="2 weeks">2 weeks</option>
+                <option value="6 weeks">6 weeks</option>
+              </select>
+              <span class="field-error" id="error-timeSinceEvent" role="alert"></span>
+            </div>
+
+            <div class="field field--half">
+              <label for="offerStyle">Offer style</label>
+              <select id="offerStyle" name="offerStyle" required>
+                <option value="">Select offer style</option>
+                <option value="none">None</option>
+                <option value="gentle-reminder">Gentle reminder</option>
+                <option value="limited-time">Limited-time incentive</option>
+                <option value="membership">Membership nudge</option>
+              </select>
+              <span class="field-error" id="error-offerStyle" role="alert"></span>
+            </div>
+
+            <div class="field field--half">
+              <label for="tone">Tone</label>
+              <select id="tone" name="tone" required>
+                <option value="">Select tone</option>
+                <option value="luxe">Luxe</option>
+                <option value="warm">Warm</option>
+                <option value="clinical">Clinical</option>
+                <option value="direct">Direct</option>
+              </select>
+              <span class="field-error" id="error-tone" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="brandName">Business / brand name</label>
+              <input
+                type="text"
+                id="brandName"
+                name="brandName"
+                required
+                placeholder="Your medspa name"
+                autocomplete="organization"
+              >
+              <span class="field-error" id="error-brandName" role="alert"></span>
+            </div>
+
+            <div class="field">
+              <label for="additionalContext">Additional context <span class="label-optional">(optional)</span></label>
+              <textarea
+                id="additionalContext"
+                name="additionalContext"
+                rows="3"
+                placeholder="Anything else to consider? Ex: first-time client, VIP client, seasonal promo, premium brand tone"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary" id="generate-btn">
+              Generate follow-up messages
+            </button>
+            <p class="form-hint" id="form-hint">Fill in the details above to generate your follow-up sequence.</p>
+          </div>
+
+          <div class="form-banner form-banner--error hidden" id="form-banner-error" role="alert"></div>
+        </form>
+      </section>
+
+      <section
+        class="results-section hidden"
+        id="results-section"
+        aria-live="polite"
+        aria-labelledby="results-heading"
+      >
+        <div class="results-header">
+          <h2 id="results-heading">Your follow-up sequence</h2>
+          <p class="results-meta" id="results-meta"></p>
+          <button type="button" class="btn btn--secondary" id="reset-btn">Start over</button>
+        </div>
+
+        <div class="results-block" id="timing-block">
+          <h3>Suggested timing</h3>
+          <ul class="timing-list" id="timing-list"></ul>
+        </div>
+
+        <div class="results-block" id="sms-block">
+          <h3>SMS sequence</h3>
+          <div class="output-cards" id="sms-cards"></div>
+        </div>
+
+        <div class="results-block" id="email-block">
+          <h3>Email sequence</h3>
+          <div class="output-cards" id="email-cards"></div>
+        </div>
+
+        <div class="results-block" id="call-block">
+          <h3>Call / voicemail script</h3>
+          <div class="output-card" id="call-card"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="js/gate.js"></script>
+</body>
+</html>

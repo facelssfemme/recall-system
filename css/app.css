@@ -1,0 +1,341 @@
+/* The Recall System — builder app */
+
+.app-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+}
+
+.app-hero {
+  position: relative;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.app-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0 0 var(--space-md);
+}
+
+.app-hero__sub {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.form-section {
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+}
+
+.form-section form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+@media (min-width: 540px) {
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .field:not(.field--half) {
+    grid-column: 1 / -1;
+  }
+}
+
+.field label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--space-xs);
+}
+
+.label-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.field-error {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--error);
+  margin-top: var(--space-xs);
+  min-height: 1.25em;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.field--invalid input,
+.field--invalid select,
+.field--invalid textarea {
+  border-color: var(--error);
+}
+
+.form-actions {
+  margin-top: var(--space-lg);
+  text-align: center;
+}
+
+.form-hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: var(--space-sm) 0 0;
+}
+
+.form-banner {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+}
+
+.form-banner--error {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid #e8c4c4;
+}
+
+.form-actions .btn--primary {
+  width: 100%;
+  max-width: 20rem;
+}
+
+.results-section {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.results-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border);
+}
+
+.results-header h2 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.results-meta {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.results-block {
+  margin-bottom: var(--space-xl);
+}
+
+.results-block h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--space-md);
+}
+
+.output-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.output-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.output-card__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.output-card__subject {
+  font-weight: 600;
+  margin: 0 0 var(--space-sm);
+  font-size: 0.9375rem;
+}
+
+.output-card__body {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.timing-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.timing-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.9375rem;
+}
+
+.timing-list li:last-child {
+  border-bottom: none;
+}
+
+.timing-list__channel {
+  font-weight: 600;
+  min-width: 5rem;
+}
+
+.timing-list__when {
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.copy-fallback {
+  font-size: 0.8125rem;
+  color: var(--error);
+  margin-top: var(--space-xs);
+}
+
+.access-gate {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg) var(--space-md);
+  background: linear-gradient(180deg, var(--rose-tint) 0%, var(--bg) 40%);
+}
+
+.access-gate__card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.access-gate__title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  margin: 0 0 var(--space-sm);
+}
+
+.access-gate__helper {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-lg);
+}
+
+.access-gate .field {
+  text-align: left;
+}
+
+.access-logout {
+  display: block;
+  margin: 0 0 var(--space-sm) auto;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.access-logout:hover {
+  color: var(--accent-deep);
+}
+
+.app-header-bar {
+  position: relative;
+  padding: var(--space-sm) 0;
+  margin-bottom: 0;
+}
+
+.app-header-bar .site-header__inner {
+  position: relative;
+  justify-content: center;
+}
+
+.app-header-bar .access-logout {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
