@@ -1,5 +1,5 @@
 /** Thank-you page — update before deploy */
-const BUILDER_URL = './app.html';
+const BUILDER_URL = 'https://recallsystem.easeandempire.co/app';
 const ACCESS_PASSWORD = 'FOLLOWUP26';
 
 const builderUrlDisplay = document.getElementById('builder-url-display');
